@@ -60,10 +60,10 @@ order by b.DS_CLINICA
 ;
 
 ``` 
-```SQL
+
 
 ## Paciente Dia 
-
+```SQL
 select   --distinct(a.nr_atendimento),
     --a.IE_CLINICA,
   a.dt_entrada,
