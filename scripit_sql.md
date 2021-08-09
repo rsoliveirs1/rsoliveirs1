@@ -59,6 +59,7 @@ b.DS_CLINICA, b.ie_clinica
 order by b.DS_CLINICA
 ;
 
+``` 
 ```SQL
 
 ## Paciente Dia 
