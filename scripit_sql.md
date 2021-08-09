@@ -91,5 +91,5 @@ from    paciente_internado_v2 a
 where a.CD_CONVENIO = 42
 
 and a.cd_setor_atendimento in (103,99,100,101,102,104,105,95,160,155,96,157,156,163,159)
-order by 3, a.DS_SETOR_ATENDIMENTO asc
+order by 3, a.DS_SETOR_ATENDIMENTO asc;
 ```
