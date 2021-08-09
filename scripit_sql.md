@@ -59,4 +59,35 @@ b.DS_CLINICA, b.ie_clinica
 order by b.DS_CLINICA
 ;
 
-````
+``` SQL
+## Paciente Dia 
+
+select   --distinct(a.nr_atendimento),
+    --a.IE_CLINICA,
+  a.dt_entrada,
+  a.dt_alta,
+  obter_desc_convenio(a.cd_convenio)conv,
+  obter_clinica_atendimento(nr_atendimento)clin_atend,
+   decode (a.IE_TIPO_ATENDIMENTO ,
+       1,'Internado',
+       3,'Pronto Socorro',
+       7,'Externo',
+       8,'Atendimento Ambulatórial'
+      )tipo_Atend,
+   (trunc(trunc(nvl(a.dt_alta, sysdate)) - trunc(a.dt_entrada))) nr_dias_internado,
+  --obter_nome_paciente(a.nr_atendimento) nm_paciente,
+  --a.nr_prontuario,
+ -- a.nm_medico,
+  a.ds_convenio || '\' || a.ds_categoria ds_conv_categ,
+  a.DS_SETOR_ATENDIMENTO,
+  --substr(obter_desc_motivo_alta(a.cd_motivo_alta),1,60) ds_motivo_alta,
+  --substr(obter_desc_cid(obter_cid_atendimento(a.nr_atendimento,'p')),1,100) ds_cid_alta,
+  substr(obter_especialidade_medico(a.cd_medico_resp,'D'),1,40) ds_espec_medico,
+  CD_UNIDADE LEITO
+
+from    paciente_internado_v2 a
+where a.CD_CONVENIO = 42
+
+and a.cd_setor_atendimento in (103,99,100,101,102,104,105,95,160,155,96,157,156,163,159)
+order by 3, a.DS_SETOR_ATENDIMENTO asc
+```
